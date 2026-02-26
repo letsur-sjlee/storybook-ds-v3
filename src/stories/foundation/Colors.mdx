@@ -1,0 +1,141 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import { primitives } from '../../tokens/primitives';
+import { semanticColors } from '../../tokens/semantic-colors';
+
+<Meta title="Foundation/Colors" />
+
+# Colors
+
+디자인 시스템의 색상 체계는 **Primitive Palette**와 **Semantic Tokens**로 구성됩니다.
+
+## Primitive Palette
+원시 색상 팔레트는 시스템에서 사용하는 모든 색상의 원천입니다. 직접 사용하기보다는 Semantic Token을 통해 참조하는 것을 권장합니다.
+
+<ColorPalette>
+  <ColorItem
+    title="Base"
+    subtitle="Basic colors"
+    colors={{
+      White: primitives.base.white,
+      Black: primitives.base.black,
+      Transparent: primitives.base.transparent
+    }}
+  />
+  <ColorItem
+    title="Gray"
+    subtitle="Neutral grays"
+    colors={primitives.gray}
+  />
+  <ColorItem
+    title="Brand"
+    subtitle="Main brand colors (Teal/Green)"
+    colors={primitives.brand}
+  />
+  <ColorItem
+    title="Error"
+    subtitle="Error & Destructive"
+    colors={primitives.error}
+  />
+  <ColorItem
+    title="Warning"
+    subtitle="Warning & Caution"
+    colors={primitives.warning}
+  />
+  <ColorItem
+    title="Success"
+    subtitle="Success & Positive"
+    colors={primitives.success}
+  />
+  <ColorItem
+    title="Blue"
+    subtitle="Information & Links"
+    colors={primitives.blue}
+  />
+  <ColorItem
+    title="Purple"
+    subtitle="Accent & Special"
+    colors={primitives.purple}
+  />
+</ColorPalette>
+
+## Semantic Tokens
+시멘틱 토큰은 목적과 의미에 따라 색상을 정의합니다. UI 개발 시에는 항상 이 토큰을 사용해야 합니다.
+
+### Text
+텍스트와 인라인 요소에 사용되는 색상입니다.
+<ColorPalette>
+  <ColorItem
+    title="Text Primary"
+    subtitle="Main text"
+    colors={{
+      primary: semanticColors.text.primary,
+      'on-brand': semanticColors.text['primary-on-brand']
+    }}
+  />
+  <ColorItem
+    title="Text Secondary"
+    subtitle="Supportive text"
+    colors={{
+      secondary: semanticColors.text.secondary,
+      'secondary-hover': semanticColors.text['secondary-hover']
+    }}
+  />
+  <ColorItem
+    title="Status Text"
+    subtitle="Error, Warning, Success"
+    colors={{
+      error: semanticColors.text['error-primary'],
+      warning: semanticColors.text['warning-primary'],
+      success: semanticColors.text['success-primary'],
+      link: semanticColors.text.link
+    }}
+  />
+</ColorPalette>
+
+### Background
+컴포넌트 및 페이지 배경에 사용되는 색상입니다.
+<ColorPalette>
+  <ColorItem
+    title="Background Primary"
+    subtitle="Default backgrounds"
+    colors={{
+      white: semanticColors.background.primary,
+      hover: semanticColors.background['primary-hover'],
+      solid: semanticColors.background['primary-solid']
+    }}
+  />
+  <ColorItem
+    title="Background Brand"
+    subtitle="Brand specific backgrounds"
+    colors={{
+      solid: semanticColors.background['brand-solid'],
+      'solid-hover': semanticColors.background['brand-solid-hover'],
+      section: semanticColors.background['brand-section']
+    }}
+  />
+  <ColorItem
+    title="Background Status"
+    subtitle="Feedback backgrounds"
+    colors={{
+      'error-primary': semanticColors.background['error-primary'],
+      'error-solid': semanticColors.background['error-solid'],
+      'warning-primary': semanticColors.background['warning-primary'],
+      'success-primary': semanticColors.background['success-primary']
+    }}
+  />
+</ColorPalette>
+
+### Border
+구분선 및 외곽선에 사용되는 색상입니다.
+<ColorPalette>
+  <ColorItem
+    title="Border Main"
+    subtitle="Primary & Secondary borders"
+    colors={{
+      primary: semanticColors.border.primary,
+      secondary: semanticColors.border.secondary,
+      brand: semanticColors.border.brand,
+      error: semanticColors.border.error
+    }}
+  />
+</ColorPalette>

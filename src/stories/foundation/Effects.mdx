@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks';
+import { boxShadow } from '../../tokens/effects';
+
+<Meta title="Foundation/Effects" />
+
+# Effects
+
+컴포넌트의 계층 구조와 시각적 피드백을 정의하는 효과 시스템입니다.
+
+## Shadows (Elevation)
+그림자는 요소의 고도(Elevation)를 나타냅니다. 배경과의 분리 정도에 따라 적절한 단계를 선택합니다.
+
+<div className="sb-unstyled mt-8">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+    {Object.entries(boxShadow)
+      .filter(([key]) => !key.startsWith('focus'))
+      .map(([key, value]) => (
+        <div key={key} className="flex flex-col gap-3">
+          <div className="flex justify-between items-end px-1">
+            <span className="text-sm font-bold text-gray-900">{key.toUpperCase()}</span>
+            <code className="text-[10px] text-gray-400 font-mono italic">{value.split(',')[0]}...</code>
+          </div>
+          <div className="relative h-32 bg-white rounded-2xl border border-gray-100 flex items-center justify-center overflow-hidden" style={{ boxShadow: value }}>
+             {/* Figma 느낌의 그리드 배경 */}
+             <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#000 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+             <div className="w-24 h-12 bg-white border border-gray-50 rounded-lg shadow-inner flex items-center justify-center text-[10px] text-gray-300 font-mono">
+               SAMPLE
+             </div>
+          </div>
+        </div>
+      ))}
+  </div>
+</div>
+
+---
+
+## Focus Rings
+상호작용 가능한 요소가 선택되었을 때의 시각적 표시입니다. 모든 포커스 링은 **2px**의 두께를 가집니다.
+
+<div className="sb-unstyled mt-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    {Object.entries(boxShadow)
+      .filter(([key]) => key.startsWith('focus'))
+      .map(([key, value]) => (
+        <div key={key} className="flex flex-col gap-4 p-6 bg-gray-50 rounded-2xl border border-gray-100 items-center">
+          <div className="relative group w-full">
+            <button
+              className="w-full py-4 bg-white border border-gray-300 rounded-xl text-sm font-bold text-gray-700 transition-all duration-200 outline-none"
+              style={{ boxShadow: value }}
+            >
+              {key.replace('focus-ring', 'FOCUS').toUpperCase()}
+            </button>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <code className="text-[12px] font-bold text-brand-600">{key}</code>
+            <div className="flex items-center gap-1.5">
+              <div className="w-3 h-3 rounded-full border border-gray-200" style={{ backgroundColor: value.split(' ').pop() }} />
+              <span className="text-[10px] text-gray-500 font-mono uppercase">{value.split(' ').pop()}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+  </div>
+</div>
+
+## Usage Rules
+1. **Shadows**: 카드는 `xs/sm`, 플로팅 버튼이나 드롭다운은 `md`, 모달은 `lg/xl` 사용을 권장합니다.
+2. **Focus Rings**: `focus-ring`은 브랜드 컬러 요소에, `focus-ring-gray`는 중립 요소에, `focus-ring-error`는 경고 상태의 요소에 적용합니다.

@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/blocks';
+import { spacing } from '../../tokens/spacing';
+
+<Meta title="Foundation/Spacing" />
+
+# Spacing
+
+디자인 시스템의 간격(Spacing) 시스템은 8pt 그리드를 기본으로 하며, 세밀한 조정을 위해 중간 단계 토큰을 포함합니다.
+
+## Spacing Tokens
+
+<div className="sb-unstyled">
+  <table className="w-full text-left border-collapse">
+    <thead>
+      <tr className="border-b border-gray-200">
+        <th className="py-2 px-4 font-semibold text-sm text-gray-600">Token</th>
+        <th className="py-2 px-4 font-semibold text-sm text-gray-600">Value (px)</th>
+        <th className="py-2 px-4 font-semibold text-sm text-gray-600">Visual</th>
+      </tr>
+    </thead>
+    <tbody>
+      {Object.entries(spacing).map(([key, value]) => (
+        <tr key={key} className="border-b border-gray-100">
+          <td className="py-2 px-4 align-middle">
+            <code className="text-xs bg-gray-50 px-1 py-0.5 rounded text-brand-700">{key}</code>
+          </td>
+          <td className="py-2 px-4 align-middle text-sm text-gray-500">
+            {value}
+          </td>
+          <td className="py-2 px-4 align-middle">
+            <div
+              className="bg-brand-500 rounded-sm"
+              style={{ width: value, height: '16px' }}
+              title={value}
+            />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+## Usage Guidelines
+- **Margin & Padding**: 모든 레이아웃의 간격은 이 토큰을 사용해야 합니다.
+- **Icon Sizes**: 아이콘 주변의 여백이나 아이콘 크기 결정 시에도 참조할 수 있습니다.
+- **Consistent Layouts**: 8px (`md`), 16px (`xl`), 24px (`3xl`) 단위를 주로 사용하는 것을 권장합니다.
