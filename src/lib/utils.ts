@@ -14,9 +14,23 @@ import { extendTailwindMerge } from 'tailwind-merge'
  *
  * 장점: 새 토큰이 추가돼도 이 파일을 수정할 필요 없음.
  */
+// 커스텀 spacing 토큰 목록
+const spacingTokens = [
+  'none', 'xxs', 'xs', 'sm', 'sm-md', 'md', 'md-plus', 'md-lg', 'lg',
+  'lg-xl', 'xl', 'xl-2xl', '2xl', '3xl', '4xl', '5xl', '6xl',
+  '7xl', '8xl', '9xl', '10xl', '11xl',
+]
+
 const twMerge = extendTailwindMerge({
   extend: {
     classGroups: {
+      // padding 그룹: 커스텀 spacing 토큰 등록 → p-0이 px-lg py-md를 덮어쓸 수 있게
+      px: [{ px: spacingTokens }],
+      py: [{ py: spacingTokens }],
+      pt: [{ pt: spacingTokens }],
+      pb: [{ pb: spacingTokens }],
+      pl: [{ pl: spacingTokens }],
+      pr: [{ pr: spacingTokens }],
       // font-size: 커스텀 폰트 크기 토큰 명시 등록
       'font-size': [
         {
