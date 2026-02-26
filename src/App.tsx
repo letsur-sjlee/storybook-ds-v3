@@ -62,7 +62,7 @@ function App() {
 
           {/* Footer Links */}
           <div className="flex flex-col items-center w-full gap-lg">
-            <Button hierarchy="link-color" size="sm" className="text-text-tertiary">
+            <Button hierarchy="link-color" size="sm">
               비밀번호 재설정
             </Button>
 
